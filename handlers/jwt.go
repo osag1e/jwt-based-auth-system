@@ -60,8 +60,8 @@ func (s *SessionHandler) Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	expirationTime := time.Now().Add(1 * time.Minute)
-	refreshExpirationTime := time.Now().Add(2 * time.Minute)
+	expirationTime := time.Now().Add(5 * time.Minute)
+	refreshExpirationTime := time.Now().Add(29 * 24 * time.Hour)
 	jti := uuid.New().String()
 	refreshJTI := uuid.New().String()
 

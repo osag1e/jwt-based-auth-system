@@ -1,7 +1,7 @@
 # jwt-based-auth-system
 User Account CRUD with a jwt-based auth system
 
-![logs](https://github.com/osag1e/jwt-based-auth-system/blob/main/logs.png)
+![logs](https://github.com/OsagieDG/jwt-based-auth-system/blob/main/log.png)
 
 
 ## Makefile commands are:

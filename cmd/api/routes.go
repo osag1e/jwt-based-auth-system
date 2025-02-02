@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"net/http"
 
+	"github.com/OsagieDG/jwt-based-auth-system/handlers"
+	"github.com/OsagieDG/jwt-based-auth-system/internal/query"
 	"github.com/go-chi/chi/v5"
-	"github.com/osag1e/jwt-based-auth-system/handlers"
-	"github.com/osag1e/jwt-based-auth-system/internal/query"
 )
 
 func initializeRouter(dbConn *sql.DB) http.Handler {

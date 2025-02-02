@@ -7,10 +7,10 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/OsagieDG/jwt-based-auth-system/internal/models"
+	"github.com/OsagieDG/jwt-based-auth-system/internal/query"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/google/uuid"
-	"github.com/osag1e/jwt-based-auth-system/internal/models"
-	"github.com/osag1e/jwt-based-auth-system/internal/query"
 )
 
 type ContextKey string
@@ -60,8 +60,9 @@ func (s *SessionHandler) Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	expirationTime := time.Now().Add(5 * time.Minute)
-	refreshExpirationTime := time.Now().Add(29 * 24 * time.Hour)
+	expirationTime := time.Now().Add(1 * time.Minute)
+	// refreshExpirationTime := time.Now().Add(29 * 24 * time.Hour)
+	refreshExpirationTime := time.Now().Add(2 * time.Minute)
 	jti := uuid.New().String()
 	refreshJTI := uuid.New().String()
 

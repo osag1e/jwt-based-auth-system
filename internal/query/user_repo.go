@@ -6,8 +6,8 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/OsagieDG/jwt-based-auth-system/internal/models"
 	"github.com/google/uuid"
-	"github.com/osag1e/jwt-based-auth-system/internal/models"
 )
 
 type UserRespository interface {

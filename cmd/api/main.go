@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/OsagieDG/jwt-based-auth-system/internal/db/migrations"
+	"github.com/OsagieDG/jwt-based-auth-system/internal/db/postgres"
+	"github.com/OsagieDG/mlog/service/middleware"
 	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/joho/godotenv"
-	"github.com/osag1e/jwt-based-auth-system/internal/db/migrations"
-	"github.com/osag1e/jwt-based-auth-system/internal/db/postgres"
-	"github.com/osag1e/logstack/service/middleware"
 )
 
 func main() {
@@ -37,16 +37,17 @@ func main() {
 	}
 
 	router := initializeRouter(dbConn)
+
 	listenAddr := os.Getenv("HTTP_LISTEN_ADDRESS")
 
-	stack := middleware.LogStack(
+	mlog := middleware.MLog(
 		middleware.LogRequest,
 		middleware.LogResponse,
 		middleware.RecoverPanic,
 	)
 
 	log.Printf("Server is listening on %s...", listenAddr)
-	if err := http.ListenAndServe(listenAddr, stack(router)); err != nil {
+	if err := http.ListenAndServe(listenAddr, mlog(router)); err != nil {
 		log.Fatal("HTTP server error:", err)
 	}
 }

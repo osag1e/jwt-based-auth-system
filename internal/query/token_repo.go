@@ -4,7 +4,7 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/osag1e/jwt-based-auth-system/internal/models"
+	"github.com/OsagieDG/jwt-based-auth-system/internal/models"
 )
 
 type TokenRepository interface {
